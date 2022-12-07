@@ -1,0 +1,45 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using lab9_WebDriver.WattpadPage;
+using OpenQA.Selenium;
+using OpenQA.Selenium.Support;
+
+
+namespace lab9_WebDriver.Page
+{
+    public class SearchPage : BasePage
+    {
+        private string url;
+        protected override string? Url => url ;
+        private string _bookName;
+
+        public SearchPage(string bookName) : base() 
+        { 
+            _bookName = bookName;
+            var url = $"https://www.wattpad.com/search/'{_bookName}'";
+        }
+
+        public BasePage ClickOnTheBook(string Bookname)
+        {
+
+            findElement($"driver.find_elements_by_xpath('//*[contains(text(), '{Bookname}')]')");
+            return this;
+        }
+
+
+        public bool TryFindSearchBook(string bookName = "")
+        {
+            if (bookName == "") bookName = _bookName;
+            var book = findElement($"driver.find_elements_by_xpath('//*[contains(text(), '{bookName}')]')");
+
+            return !(book == null);
+        }
+        
+
+
+
+    }
+}

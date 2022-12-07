@@ -15,14 +15,14 @@ public abstract class TestsClass
 {
     protected string pathToDriver = @"C:\\software\\drivers";
 
-
-    protected Workspace workspace;
+    protected Workspace _ws;
+    protected Workspace workspace => _ws ?? new Workspace(pathToDriver); 
     protected static IWebDriver? driver => Workspace.driver;
 
     [SetUp]
     public virtual void Setup()
     {
-        workspace = new Workspace(pathToDriver);
+        //workspace = new Workspace(pathToDriver);
     }
 
     [TearDown]

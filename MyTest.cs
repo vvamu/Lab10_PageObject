@@ -22,13 +22,7 @@ public class MyTest : TestsClass
     public void SearchBook()
     {
 
-        Thread.Sleep(1000);
-        var searchInput = findElement("//input[@id='search-query']");
-        searchInput.Click();
-        searchInput.SendKeys(bookName);
-        searchInput.SendKeys(Keys.Enter);
-
-        Thread.Sleep(1000);
+        
         string text = "";
         try
         {
@@ -50,21 +44,25 @@ public class MyTest : TestsClass
             Assert.Fail(); 
         }
 
-
+        var searchPage = new SearchPage(bookName);
+          
 
 
     }
 
     [Test]
-    public void Test()
+    public void Test() //6. Добавить книгу в список для чтения
     {
         
         var home = new HomePage();
 
         home.LogIn(ApplicationUser.Login, ApplicationUser.Password);
 
+        home.ClickOnTheTitleBook();
+        home.AddBookToReaadingList();
+        
 
-        Assert.IsTrue(home.CheckExpectedUrl("https://www.wattpad.com/home"));
+        Assert.IsTrue(home.CheckAddBookToReaadingList());
 
     }
 
