@@ -1,4 +1,5 @@
 
+using lab9_WebDriver.Page;
 using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -25,13 +26,14 @@ public class ICanWinTests : TestsClass
     [Test]
     public void Test1()
     {
+        var home = new PasteBinHomePage();
 
-        Thread.Sleep(1000);
-        findElement(By.XPath(("//span[@id='select2-postform-expiration-container']"))).Click();
-        Thread.Sleep(1000);
-        findElement(By.XPath(($"//li[text()='10 Minutes']"))).Click();
-        findElement(By.XPath(("//input[@id='postform-name']"))).SendKeys(titleValue);
-        findElement(By.XPath(("//textarea"))).SendKeys(codeValue); 
+
+        //home.CreateNewPaste().EnterDefaultValues();
+        
+
+        
+       
         
 
 

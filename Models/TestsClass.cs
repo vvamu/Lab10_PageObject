@@ -13,10 +13,10 @@ namespace lab9_WebDriver;
 
 public abstract class TestsClass
 {
-    protected string pathToDriver = @"C:\\software\\drivers";
+    //protected virtual string? Url => "https://pastebin.com";
 
     protected Workspace _ws;
-    protected Workspace workspace => _ws ?? new Workspace(pathToDriver); 
+    protected Workspace workspace => _ws ?? new Workspace(Utils.Utils.pathToDriver); 
     protected static IWebDriver? driver => Workspace.driver;
 
     [SetUp]

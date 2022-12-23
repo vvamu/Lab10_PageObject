@@ -11,18 +11,22 @@ namespace lab9_WebDriver.WattpadPage
     {
         protected abstract string? Url { get; }
 
-        public BasePage()
-        {
+        public BasePage() { }
 
+        public void OpenBase()
+        {
             workspace.OpenBrowserWithUrl(Url);
 
         }
 
-        public bool CheckExpectedUrl(string url)
+        public void OpenUrl(string url)
         {
-            if (driver.Url == url) return true;
-            else return false;
+            workspace.OpenBrowserWithUrl(url);
+
         }
+
+
+
 
 
 
